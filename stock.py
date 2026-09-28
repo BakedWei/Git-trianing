@@ -1,5 +1,5 @@
-import yfinance as yf
-import pandas as pd
+import yfinance as yf #type: ignore
+import pandas as pd #type: ignore
 from company import get_stock
 
 chosenstock = []
@@ -73,6 +73,9 @@ def threesolderRed(data) :
         return []
     else:
         return filtered_data.index.strftime('%Y-%m-%d').tolist()
+    
+#def chenshim(data) :
+    
 
 
 def create_ticker(symbol):
@@ -91,7 +94,7 @@ if indexn != 0:
         chosenstock.append(tmp)
 
 for i in range(0, len(chosenstock)) :
-    chosenstock[i] = chosenstock[i].history(period="2mo")
+    chosenstock[i] = chosenstock[i].history(period="14d")
 
 summary_results = {
     "陽吞": {},
@@ -120,7 +123,7 @@ for i in range(0, len(chosenstock)) :
     if dates_red:  summary_results["紅三兵"][symbol] = dates_red
 
 print("\n" + "="*40)
-print("📊 最終檢測結果總結")
+print("*最終檢測結果總結*")
 print("="*40)
 
 for pattern_name, result_dict in summary_results.items():
